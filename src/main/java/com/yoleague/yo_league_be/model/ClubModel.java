@@ -1,5 +1,6 @@
 package com.yoleague.yo_league_be.model;
 
+import com.yoleague.yo_league_be.entity.Club;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +14,16 @@ public class ClubModel {
     private String coachName;
     private String flag;
     private String coachImage;
+
+    public ClubModel(Long id){
+        this.id = id;
+    }
+
+    public ClubModel(Club club){
+        this.id = club.getId();
+        this.name = club.getName();
+        this.coachName = club.getCoachName();
+        this.flag = club.getFlag();
+        this.coachImage = club.getCoachImage();
+    }
 }

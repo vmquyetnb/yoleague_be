@@ -22,7 +22,6 @@ public class ClubServiceImpl implements ClubService {
         return clubRepo.findAll().stream()
                 .map(item -> {
                     ClubModel clubModel = new ClubModel();
-                    clubModel.setId(item.getId());
                     clubModel.setName(item.getName());
                     clubModel.setCoachName(item.getCoachName());
                     clubModel.setFlag(item.getFlag());
@@ -41,7 +40,6 @@ public class ClubServiceImpl implements ClubService {
         club.setCoachImage(clubModel.getCoachImage());
         club = clubRepo.save(club);
 
-        clubModel.setId(club.getId());
         clubModel.setName(club.getName());
         clubModel.setCoachName(club.getCoachName());
         clubModel.setFlag(club.getFlag());

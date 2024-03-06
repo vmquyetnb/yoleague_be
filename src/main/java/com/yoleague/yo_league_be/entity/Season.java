@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.apachecommons.CommonsLog;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -21,4 +23,11 @@ public class Season {
 
     @Column(name = "status")
     private int status;
+
+    @OneToMany(mappedBy = "season",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Match> matches;
+
+    public Season (Long id){
+        this.id = id;
+    }
 }

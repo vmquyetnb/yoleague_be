@@ -7,8 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Rank {
-    private Long id;
+public class RankModel {
     private int played;
     private int won;
     private int lost;
@@ -18,5 +17,5 @@ public class Rank {
     private int goalsDifference;
     private int points;
     private ClubModel club;
-    private Season season;
+    private SeasonModel season;
 }

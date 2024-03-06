@@ -17,12 +17,12 @@ public class Match {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "home_club_id" ,referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "home_club_id")
     private Club homeClub;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "away_club_id",referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "away_club_id")
     private Club awayClub;
 
     @Column(name = "home_goals")
@@ -36,5 +36,9 @@ public class Match {
 
     @Column(name = "status")
     private int status;
+
+    @ManyToOne
+    @JoinColumn(name = "season_id")
+    private Season season;
 
 }
