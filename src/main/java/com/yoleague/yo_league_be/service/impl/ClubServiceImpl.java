@@ -7,7 +7,6 @@ import com.yoleague.yo_league_be.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,9 +21,11 @@ public class ClubServiceImpl implements ClubService {
         return clubRepo.findAll().stream()
                 .map(item -> {
                     ClubModel clubModel = new ClubModel();
+                    clubModel.setId(item.getId());
                     clubModel.setName(item.getName());
                     clubModel.setCoachName(item.getCoachName());
                     clubModel.setFlag(item.getFlag());
+                    clubModel.setLogo(item.getLogo());
                     clubModel.setCoachImage(item.getCoachImage());
                     return clubModel;
                 })
@@ -43,6 +44,7 @@ public class ClubServiceImpl implements ClubService {
         clubModel.setName(club.getName());
         clubModel.setCoachName(club.getCoachName());
         clubModel.setFlag(club.getFlag());
+        clubModel.setLogo(club.getLogo());
         clubModel.setCoachImage(club.getCoachImage());
         return clubModel;
     }

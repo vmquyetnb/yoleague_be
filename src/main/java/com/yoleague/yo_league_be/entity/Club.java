@@ -28,6 +28,9 @@ public class Club {
     @Column(name = "flag")
     private String flag;
 
+    @Column(name = "logo")
+    private String logo;
+
     @Column(name = "coach_image")
     private String coachImage;
 

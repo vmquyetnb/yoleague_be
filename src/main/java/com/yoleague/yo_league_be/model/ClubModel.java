@@ -13,6 +13,7 @@ public class ClubModel {
     private String name;
     private String coachName;
     private String flag;
+    private String logo;
     private String coachImage;
 
     public ClubModel(Long id){
@@ -24,6 +25,7 @@ public class ClubModel {
         this.name = club.getName();
         this.coachName = club.getCoachName();
         this.flag = club.getFlag();
+        this.logo = club.getLogo();
         this.coachImage = club.getCoachImage();
     }
 }

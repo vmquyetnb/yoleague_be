@@ -17,7 +17,8 @@ public class RankController {
     public RankService rankService;
 
     @GetMapping("")
-    public List<RankModel> getAllBySeason (@RequestParam(name = "seasonId", required = false) Long id){
+    public List<RankModel> getAllBySeason (@RequestParam(name = "seasonId" +
+            "", required = false) Long id){
         List<RankModel> listRank = new ArrayList<>();
         if(id != null){
             listRank = rankService.getAllRankBySeasonId(id);
