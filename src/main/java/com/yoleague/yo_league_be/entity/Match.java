@@ -26,16 +26,17 @@ public class Match {
     private Club awayClub;
 
     @Column(name = "home_goals")
-    private int homeGoals;
+    private Integer homeGoals;
 
     @Column(name = "away_goals")
-    private int awayGoals;
+    private Integer awayGoals;
 
     @Column(name = "date")
+    @Temporal(TemporalType.DATE)
     private Date date;
 
     @Column(name = "status")
-    private int status;
+    private Integer status;
 
     @ManyToOne
     @JoinColumn(name = "season_id")

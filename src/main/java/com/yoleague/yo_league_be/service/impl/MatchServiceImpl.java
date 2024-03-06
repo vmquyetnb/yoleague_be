@@ -13,6 +13,7 @@ import com.yoleague.yo_league_be.service.MatchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -44,6 +45,17 @@ public class MatchServiceImpl implements MatchService {
             matchModel.setDate(item.getDate());
             matchModel.setStatus(item.getStatus());
             matchModel.setSeason(new SeasonModel(item.getSeason()));
+            result.add(matchModel);
+        }
+        return result;
+    }
+
+    @Override
+    public List<MatchModel> getAllMatchesToday() {
+        List<Match> matches = matchRepo.findAllByDateToday();
+        List<MatchModel> result = new ArrayList<>();
+        for(Match item : matches){
+            MatchModel matchModel = new MatchModel(item);
             result.add(matchModel);
         }
         return result;

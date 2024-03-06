@@ -16,9 +16,19 @@ import java.util.List;
 public class MatchModel {
     private ClubModel homeClub;
     private ClubModel awayClub;
-    private int homeGoals;
-    private int awayGoals;
+    private Integer homeGoals;
+    private Integer awayGoals;
     private Date date;
-    private int status;
+    private Integer status;
     private SeasonModel season;
+
+    public MatchModel(Match match) {
+        this.homeClub = new ClubModel(match.getHomeClub());
+        this.awayClub = new ClubModel(match.getAwayClub());
+        this.homeGoals = match.getHomeGoals();
+        this.awayGoals = match.getAwayGoals();
+        this.date = match.getDate();
+        this.status = match.getStatus();
+        this.season = new SeasonModel(match.getSeason());
+    }
 }

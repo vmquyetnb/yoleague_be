@@ -19,6 +19,11 @@ public class MatchController {
         return matchService.getAllMatch();
     }
 
+    @GetMapping("/today")
+    public List<MatchModel> getMatchToday() {
+        return matchService.getAllMatchesToday();
+    }
+
     @PostMapping("/add")
     public MatchModel saveMatch (@RequestBody MatchModel matchModel){
         return matchService.saveMatch(matchModel);

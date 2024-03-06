@@ -7,5 +7,7 @@ import java.util.List;
 public interface MatchService {
     List<MatchModel> getAllMatch();
 
+    List<MatchModel> getAllMatchesToday();
+
     MatchModel saveMatch(MatchModel matchModel);
 }
