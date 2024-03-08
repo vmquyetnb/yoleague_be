@@ -27,6 +27,9 @@ public class Season {
     @OneToMany(mappedBy = "season",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<Match> matches;
 
+    @OneToMany(mappedBy = "season",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<Rank> ranks;
+
     public Season (Long id){
         this.id = id;
     }

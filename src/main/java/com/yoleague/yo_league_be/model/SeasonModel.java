@@ -1,9 +1,13 @@
 package com.yoleague.yo_league_be.model;
 
+import com.yoleague.yo_league_be.entity.Rank;
 import com.yoleague.yo_league_be.entity.Season;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +17,8 @@ public class SeasonModel {
     private String name;
     private int status;
 
+    private List<RankModel> ranks = new ArrayList<>();
+
     public  SeasonModel(Long id){
         this.id = id;
     }
@@ -21,5 +27,8 @@ public class SeasonModel {
         this.id = season.getId();
         this.name = season.getName();
         this.status = season.getStatus();
+        for (Rank rank : season.getRanks()) {
+            this.ranks.add(new RankModel(rank));
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.yoleague.yo_league_be.service.impl;
 
+import com.yoleague.yo_league_be.entity.Rank;
 import com.yoleague.yo_league_be.entity.Season;
 import com.yoleague.yo_league_be.model.SeasonModel;
 import com.yoleague.yo_league_be.repository.SeasonRepo;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -27,6 +29,12 @@ public class SeasonServiceImpl implements SeasonService {
             result.add(seasonModel);
         }
         return result;
+    }
+
+    @Override
+    public SeasonModel getRankingSeasonNewest() {
+        Season season = seasonRepo.getRankingSeasonNewest();
+        return new SeasonModel(season);
     }
 
     @Override

@@ -9,5 +9,5 @@ public interface RankService {
 
     List<RankModel> getAllRankBySeasonId(Long id);
 
-    RankModel saveRank(RankModel rankModel);
+//    RankModel saveRank(RankModel rankModel);
 }

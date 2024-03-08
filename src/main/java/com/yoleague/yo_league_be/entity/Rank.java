@@ -45,7 +45,7 @@ public class Rank {
     @JoinColumn(name = "club_id")
     private Club club;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "season_id" ,referencedColumnName = "id")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "season_id")
     private Season season;
 }

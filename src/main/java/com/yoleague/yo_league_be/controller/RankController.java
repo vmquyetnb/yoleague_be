@@ -26,8 +26,8 @@ public class RankController {
         return listRank;
     }
 
-    @PostMapping("/add")
-    public  RankModel saveRank (@RequestBody RankModel rankModel){
-        return rankService.saveRank(rankModel);
-    }
+//    @PostMapping("/add")
+//    public  RankModel saveRank (@RequestBody RankModel rankModel){
+//        return rankService.saveRank(rankModel);
+//    }
 }

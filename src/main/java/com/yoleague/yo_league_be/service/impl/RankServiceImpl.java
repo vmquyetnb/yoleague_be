@@ -33,17 +33,7 @@ public class RankServiceImpl implements RankService {
         List<RankModel> result = new ArrayList<>();
         List<Rank> ranks = rankRepo.findBySeasonNewest();
         for(Rank item : ranks){
-            RankModel rankModel = new RankModel();
-            rankModel.setClub((List<ClubModel>) new ClubModel(item.getClub()));
-            rankModel.setSeason(new SeasonModel(item.getSeason()));
-            rankModel.setPlayed(item.getPlayed());
-            rankModel.setWon(item.getWon());
-            rankModel.setDrawn(item.getDrawn());
-            rankModel.setLost(item.getLost());
-            rankModel.setGoalsFor(item.getGoalsFor());
-            rankModel.setGoalsAgainst(item.getGoalsAgainst());
-            rankModel.setGoalsDifference(item.getGoalsDifference());
-            rankModel.setPoints(item.getPoints());
+            RankModel rankModel = new RankModel(item);
             result.add(rankModel);
         }
         return result;
@@ -54,53 +44,43 @@ public class RankServiceImpl implements RankService {
         List<RankModel> result = new ArrayList<>();
         List<Rank> ranks = rankRepo.findBySeasonId(id);
         for(Rank item : ranks){
-            RankModel rankModel = new RankModel();
-            rankModel.setClub((List<ClubModel>) new ClubModel(item.getClub()));
-            rankModel.setSeason(new SeasonModel(item.getSeason()));
-            rankModel.setPlayed(item.getPlayed());
-            rankModel.setWon(item.getWon());
-            rankModel.setDrawn(item.getDrawn());
-            rankModel.setLost(item.getLost());
-            rankModel.setGoalsFor(item.getGoalsFor());
-            rankModel.setGoalsAgainst(item.getGoalsAgainst());
-            rankModel.setGoalsDifference(item.getGoalsDifference());
-            rankModel.setPoints(item.getPoints());
+            RankModel rankModel = new RankModel(item);
             result.add(rankModel);
         }
         return result;
     }
 
-    @Override
-    public RankModel saveRank(RankModel rankModel) {
-        Rank rank = new Rank();
-        List<ClubModel> clubs = rankModel.getClub();
-        for (ClubModel clubModel : clubs) {
-            Long clubId = clubModel.getId();
-            Club club = clubRepo.findById(clubId).orElse(null);
-            rank.setClub(club);
-        }
-        Season season = seasonRepo.findById(rankModel.getSeason().getId()).orElse(null);
-        rank.setSeason(season);
-        rank.setPlayed(0);
-        rank.setWon(0);
-        rank.setLost(0);
-        rank.setDrawn(0);
-        rank.setGoalsFor(0);
-        rank.setGoalsAgainst(0);
-        rank.setGoalsDifference(0);
-        rank.setPoints(0);
-        rankRepo.save(rank);
-
-        rankModel.setClub(clubs);
-        rankModel.setSeason(new SeasonModel(rank.getSeason()));
-        rankModel.setPlayed(rank.getPlayed());
-        rankModel.setWon(rank.getWon());
-        rankModel.setDrawn(rank.getDrawn());
-        rankModel.setLost(rank.getLost());
-        rankModel.setGoalsFor(rank.getGoalsFor());
-        rankModel.setGoalsAgainst(rank.getGoalsAgainst());
-        rankModel.setGoalsDifference(rank.getGoalsDifference());
-        rankModel.setPoints(rank.getPoints());
-        return rankModel;
-    }
+//    @Override
+//    public RankModel saveRank(RankModel rankModel) {
+//        Rank rank = new Rank();
+//        List<ClubModel> clubs = rankModel.getClub();
+//        for (ClubModel clubModel : clubs) {
+//            Long clubId = clubModel.getId();
+//            Club club = clubRepo.findById(clubId).orElse(null);
+//            rank.setClub(club);
+//        }
+//        Season season = seasonRepo.findById(rankModel.getSeason().getId()).orElse(null);
+//        rank.setSeason(season);
+//        rank.setPlayed(0);
+//        rank.setWon(0);
+//        rank.setLost(0);
+//        rank.setDrawn(0);
+//        rank.setGoalsFor(0);
+//        rank.setGoalsAgainst(0);
+//        rank.setGoalsDifference(0);
+//        rank.setPoints(0);
+//        rankRepo.save(rank);
+//
+//        rankModel.setClub(clubs);
+//        rankModel.setSeason(new SeasonModel(rank.getSeason()));
+//        rankModel.setPlayed(rank.getPlayed());
+//        rankModel.setWon(rank.getWon());
+//        rankModel.setDrawn(rank.getDrawn());
+//        rankModel.setLost(rank.getLost());
+//        rankModel.setGoalsFor(rank.getGoalsFor());
+//        rankModel.setGoalsAgainst(rank.getGoalsAgainst());
+//        rankModel.setGoalsDifference(rank.getGoalsDifference());
+//        rankModel.setPoints(rank.getPoints());
+//        return rankModel;
+//    }
 }
