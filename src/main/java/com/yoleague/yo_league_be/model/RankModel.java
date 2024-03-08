@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,6 +18,6 @@ public class RankModel {
     private int goalsAgainst;
     private int goalsDifference;
     private int points;
-    private ClubModel club;
+    private List<ClubModel> club;
     private SeasonModel season;
 }

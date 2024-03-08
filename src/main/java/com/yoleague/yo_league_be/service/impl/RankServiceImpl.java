@@ -34,7 +34,7 @@ public class RankServiceImpl implements RankService {
         List<Rank> ranks = rankRepo.findBySeasonNewest();
         for(Rank item : ranks){
             RankModel rankModel = new RankModel();
-            rankModel.setClub(new ClubModel(item.getClub()));
+            rankModel.setClub((List<ClubModel>) new ClubModel(item.getClub()));
             rankModel.setSeason(new SeasonModel(item.getSeason()));
             rankModel.setPlayed(item.getPlayed());
             rankModel.setWon(item.getWon());
@@ -55,7 +55,7 @@ public class RankServiceImpl implements RankService {
         List<Rank> ranks = rankRepo.findBySeasonId(id);
         for(Rank item : ranks){
             RankModel rankModel = new RankModel();
-            rankModel.setClub(new ClubModel(item.getClub()));
+            rankModel.setClub((List<ClubModel>) new ClubModel(item.getClub()));
             rankModel.setSeason(new SeasonModel(item.getSeason()));
             rankModel.setPlayed(item.getPlayed());
             rankModel.setWon(item.getWon());
@@ -73,8 +73,12 @@ public class RankServiceImpl implements RankService {
     @Override
     public RankModel saveRank(RankModel rankModel) {
         Rank rank = new Rank();
-        Club club = clubRepo.findById(rankModel.getClub().getId()).orElse(null);
-        rank.setClub(club);
+        List<ClubModel> clubs = rankModel.getClub();
+        for (ClubModel clubModel : clubs) {
+            Long clubId = clubModel.getId();
+            Club club = clubRepo.findById(clubId).orElse(null);
+            rank.setClub(club);
+        }
         Season season = seasonRepo.findById(rankModel.getSeason().getId()).orElse(null);
         rank.setSeason(season);
         rank.setPlayed(0);
@@ -87,7 +91,7 @@ public class RankServiceImpl implements RankService {
         rank.setPoints(0);
         rankRepo.save(rank);
 
-        rankModel.setClub(new ClubModel(rank.getClub()));
+        rankModel.setClub(clubs);
         rankModel.setSeason(new SeasonModel(rank.getSeason()));
         rankModel.setPlayed(rank.getPlayed());
         rankModel.setWon(rank.getWon());

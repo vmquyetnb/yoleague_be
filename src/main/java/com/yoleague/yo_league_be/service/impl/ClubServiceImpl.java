@@ -39,6 +39,7 @@ public class ClubServiceImpl implements ClubService {
         club.setCoachName(clubModel.getCoachName());
         club.setFlag(clubModel.getFlag());
         club.setCoachImage(clubModel.getCoachImage());
+        club.setLogo(clubModel.getLogo());
         club = clubRepo.save(club);
 
         clubModel.setName(club.getName());
